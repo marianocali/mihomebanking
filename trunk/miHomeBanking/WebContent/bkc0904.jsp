@@ -9,7 +9,7 @@
     System.out.println(e.toString());
   }
 %>
-<HTML>
+<HTML>     
 <HEAD>
 <TITLE>Display All Countries</TITLE>
 </HEAD>
