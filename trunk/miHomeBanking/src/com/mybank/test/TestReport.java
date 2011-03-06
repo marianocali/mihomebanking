@@ -17,24 +17,24 @@ public class TestReport {
         Customer customer;
 
         // Create several customers and their accounts
-        Bank.addCustomer("Jane", "Simms");
-        customer = Bank.getCustomer(0);
-        customer.addAccount(new SavingsAccount(500.00, 0.05));
-        customer.addAccount(new CheckingAccount(200.00, 400.00));
+        Banco.addCustomer("Jane", "Simms");
+        customer = Banco.getCustomer(0);
+        customer.addAccount(new CajaDeAhorro(500.00, 0.05));
+        customer.addAccount(new CuentaCorriente(200.00, 400.00));
 
-        Bank.addCustomer("Owen", "Bryant");
-        customer = Bank.getCustomer(1);
-        customer.addAccount(new CheckingAccount(200.00));
+        Banco.addCustomer("Owen", "Bryant");
+        customer = Banco.getCustomer(1);
+        customer.addAccount(new CuentaCorriente(200.00));
 
-        Bank.addCustomer("Tim", "Soley");
-        customer = Bank.getCustomer(2);
-        customer.addAccount(new SavingsAccount(1500.00, 0.05));
-        customer.addAccount(new CheckingAccount(200.00));
+        Banco.addCustomer("Tim", "Soley");
+        customer = Banco.getCustomer(2);
+        customer.addAccount(new CajaDeAhorro(1500.00, 0.05));
+        customer.addAccount(new CuentaCorriente(200.00));
 
-        Bank.addCustomer("Maria", "Soley");
-        customer = Bank.getCustomer(3);
+        Banco.addCustomer("Maria", "Soley");
+        customer = Banco.getCustomer(3);
         // Maria and Tim have a shared checking account
-        customer.addAccount(Bank.getCustomer(2).getAccount(1));
-        customer.addAccount(new SavingsAccount(150.00, 0.05));
+        customer.addAccount(Banco.getCustomer(2).getAccount(1));
+        customer.addAccount(new CajaDeAhorro(150.00, 0.05));
     }
 }

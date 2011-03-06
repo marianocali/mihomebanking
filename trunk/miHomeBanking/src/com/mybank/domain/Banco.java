@@ -3,7 +3,7 @@ package com.mybank.domain;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Bank
+public class Banco
 {
     private static List <Customer> customers;
 
@@ -12,7 +12,7 @@ public class Bank
        customers = new ArrayList <Customer>(10);
    }
 
-   private Bank()
+   private Banco()
    {
 
    }
