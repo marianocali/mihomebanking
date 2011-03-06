@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<!--	<listener>-->
+<!--		<listener-class>bkc0603.AppLifeCycleEventDemo</listener-class>-->
+<!--	</listener>-->
+	
+	<servlet>
+		<servlet-name>com.mybank.test</servlet-name>
+		<servlet-class>com.mybank.test.TestingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>com.mybank.test</servlet-name>
+		<url-pattern>/com.mybank.test</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name> bkc0513 </servlet-name>
+		<servlet-class> bkc0513.CookieServlet </servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>bkc0513 </servlet-name>
+		<url-pattern>/bkc0513</url-pattern>
+	</servlet-mapping>	
+	
+		<servlet>
+		<servlet-name> bkc0405 </servlet-name>
+		<servlet-class> com.mybank.test.LoginServlet </servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>bkc0405 </servlet-name>
+		<url-pattern>/bkc0405</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>bkc0517</servlet-name>
+		<servlet-class>bkc0517.CheckCookieServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bkc0517</servlet-name>
+		<url-pattern>/bkc0517</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>bkc0604</servlet-name>
+		<servlet-class>bkc0604.ApplicationEventDemoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bkc0604</servlet-name>
+		<url-pattern>/bkc0604</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>SessionLoginServlet</servlet-name>
+		<servlet-class>com.mybank.test.SessionLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SessionLoginServlet</servlet-name>
+		<url-pattern>/SessionLoginServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Content2Servlet</servlet-name>
+		<servlet-class>com.mybank.test.Content2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Content2Servlet</servlet-name>
+		<url-pattern>/Content2Servlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
