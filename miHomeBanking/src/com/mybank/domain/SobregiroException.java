@@ -1,10 +1,10 @@
 package com.mybank.domain;
 
-public class OverdraftException extends Exception
+public class SobregiroException extends Exception
 {
     private double deficit;
 
-    public OverdraftException(String msg, double deficit)
+    public SobregiroException(String msg, double deficit)
     {
        super(msg);
        this.deficit = deficit;
