@@ -16,6 +16,11 @@ public class Cliente {
 		this.nombre = nombre;
 		this.documento = documento;
 	}
+	
+	public String toString ()
+	{
+		return "ID: "+  id + ", Apellido: " + apellido + ", Nombre: " + nombre + ", Documento: " + documento + ", Caja de Ahorro: " + cajaDeAhorro + ", Cuenta Corriente: " + cuentaCorriente + "\n ";
+	};
 
 	public Cliente() {
 	}
