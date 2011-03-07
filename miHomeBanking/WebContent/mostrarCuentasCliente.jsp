@@ -2,8 +2,21 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
 <%
-	String id = "1";
-	Cliente elCliente = new Cliente(id);  
+	HttpSession session = request.getSession();
+	if (session == null) {
+		System.out.println("es null");
+		response.sendRedirect("login");
+	} else {
+		String loggedIn = (String) session.getAttribute("loggedIn");
+		if (!loggedIn.equals("true"))
+			response.sendRedirect("login");
+	}
+
+	String id = (String) session.getAttribute("ID");
+	Cliente elCliente = new Cliente(id);
+	CajaDeAhorro cajaDeAhorro = null;
+	CuentaCorriente cuentaCorriente = null;
+
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		System.out.println("JDBC driver loaded");
@@ -18,6 +31,7 @@
 <BODY>
 <CENTER><BR>
 <H2>Sus Cuentas</H2>
+<H2>Sus Cuentas</H2>
 <BR>
 <BR>
 <TABLE>
@@ -27,8 +41,7 @@
 		<TH>Saldo</TH>
 	</TR>
 	<%
-		String sql = "SELECT CAJA_DE_AHORRO, CUENTA_CORRIENTE "
-				+ " FROM CLIENTES WHERE ID = '" + id + "'";
+		String sql = "SELECT * FROM CLIENTES WHERE ID = '" + id + "'";
 
 		try {
 			Connection con = DriverManager.getConnection(
@@ -38,12 +51,18 @@
 			ResultSet rs = s.executeQuery(sql);
 
 			while (rs.next()) {
-				out.println("<TR>");
-				out.println("<TD>" + rs.getString(1) + "</TD>");
-				out.println("<TD>" + rs.getString(2) + "</TD>");
+				elCliente.setApellido(rs.getString(2));
+				elCliente.setNombre(rs.getString(3));
+				elCliente.setDocumento(rs.getString(4));
+				elCliente.setCajaDeAhorro(rs.getString(5));
+				elCliente.setCuentaCorriente(rs.getString(6));
+				System.out.println(elCliente);
+//				out.println("<TR>");
+//				out.println("<TD>" + rs.getString(1) + "</TD>");
+//				out.println("<TD>" + rs.getString(2) + "</TD>");
 				//				out.println("<TD>" + rs.getInt(3) + "</TD>");
 
-				out.println("</TR>");
+//				out.println("</TR>");
 			}
 			rs.close();
 			s.close();

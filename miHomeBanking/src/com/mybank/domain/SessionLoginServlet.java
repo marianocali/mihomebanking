@@ -1,4 +1,4 @@
-package com.mybank.test;
+package com.mybank.domain;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,15 +20,13 @@ public class SessionLoginServlet extends HttpServlet {
 
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		if (login(userName, password)) // verfica que el usuario existe en la BD
-		{
+		if (login(userName, password)) {
 			// send cookie to the browser
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loggedIn", new String("true"));
 			session.setAttribute("ID", new String(getIdCliente(userName)));
-			response.sendRedirect("Content2Servlet");
-		} else 
-		{
+			response.sendRedirect("mostrarCuentasCliente.jsp");
+		} else {
 			sendLoginForm(response, true);
 		}
 	}
@@ -79,21 +77,21 @@ public class SessionLoginServlet extends HttpServlet {
 		out.println("</HTML>");
 	}
 
-	public static String getIdCliente (String userName) {
+	public static String getIdCliente(String userName) {
 		String idCliente = "";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(
 					"jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 			Statement s = con.createStatement();
-			String sql = "SELECT ID FROM CLIENTES" + " WHERE USUARIO='"	+ userName + "'";
+			String sql = "SELECT ID FROM CLIENTES" + " WHERE USUARIO='"
+					+ userName + "'";
 			// StringUtil.fixSqlFieldValue(userName)
 			// StringUtil.fixSqlFieldValue(password)
 
 			ResultSet rs = s.executeQuery(sql);
 
-			if (rs.next()) 
-			{
+			if (rs.next()) {
 				idCliente = rs.getString(1);
 				rs.close();
 				s.close();
@@ -113,8 +111,7 @@ public class SessionLoginServlet extends HttpServlet {
 		return idCliente;
 	}
 
-	public static boolean login(String userName, String password) 
-	{
+	public static boolean login(String userName, String password) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(
@@ -127,8 +124,7 @@ public class SessionLoginServlet extends HttpServlet {
 
 			ResultSet rs = s.executeQuery(sql);
 
-			if (rs.next()) 
-			{
+			if (rs.next()) {
 				rs.close();
 				s.close();
 				con.close();
