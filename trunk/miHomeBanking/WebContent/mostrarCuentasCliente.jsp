@@ -6,7 +6,8 @@
 	if (session == null) {
 		System.out.println("es null");
 		response.sendRedirect("login");
-	} else {
+	} else 
+	{
 		String loggedIn = (String) session.getAttribute("loggedIn");
 		if (!loggedIn.equals("true"))
 			response.sendRedirect("login");
@@ -25,21 +26,12 @@
 	}
 %>
 <HTML>
-<HEAD>
-<TITLE>Bienvenido a la Página de sus Cuentas</TITLE>
-</HEAD>
+	<HEAD>
+		<TITLE>Bienvenido a la Página de sus Cuentas</TITLE>
+	</HEAD>
 <BODY>
-<CENTER><BR>
-<H2>Sus Cuentas</H2>
-<H2>Sus Cuentas</H2>
-<BR>
-<BR>
-<TABLE>
-	<TR>
-		<TH>Numero de Cuenta</TH>
-		<TH>Tipo de Cuenta</TH>
-		<TH>Saldo</TH>
-	</TR>
+	<CENTER><BR><BR><BR>
+
 	<%
 		String sql = "SELECT * FROM CLIENTES WHERE ID = '" + id + "'";
 
@@ -51,18 +43,12 @@
 			ResultSet rs = s.executeQuery(sql);
 
 			while (rs.next()) {
+
 				elCliente.setApellido(rs.getString(2));
 				elCliente.setNombre(rs.getString(3));
 				elCliente.setDocumento(rs.getString(4));
 				elCliente.setCajaDeAhorro(rs.getString(5));
 				elCliente.setCuentaCorriente(rs.getString(6));
-				System.out.println(elCliente);
-//				out.println("<TR>");
-//				out.println("<TD>" + rs.getString(1) + "</TD>");
-//				out.println("<TD>" + rs.getString(2) + "</TD>");
-				//				out.println("<TD>" + rs.getInt(3) + "</TD>");
-
-//				out.println("</TR>");
 			}
 			rs.close();
 			s.close();
@@ -70,8 +56,45 @@
 		} catch (SQLException e) {
 		} catch (Exception e) {
 		}
-	%>
-</TABLE>
+%>
+
+	<h2> Bienvenido
+		<%  
+			out.println("<TD>" + elCliente.getApellido() + "</TD>");
+			out.println("<TD>" + elCliente.getNombre()   + "</TD>");
+		%>
+	</h2>
+	<h3> Estas son sus cuentas: </h3>
+
+	<TABLE border=1>
+		<TR>		
+			<TH>Numero de Cuenta </TH> 
+			<TH>Tipo de Cuenta</TH>
+			<TH>Saldo</TH>				
+		</TR>
+		<TR>				
+				<%
+					
+					if (elCliente.getCajaDeAhorro() != null)
+					{
+						out.println("<TD>" + elCliente.getCajaDeAhorro() + "</TD>");
+					}						
+				%>
+			<Td>	
+				Caja de Ahorro		
+			</Td>
+			<Td>	
+				--buscar saldo--	
+			</Td>
+			<Td>	
+				<A href = "bkc0904.jsp" > Depositar
+				</A>    
+						
+			</Td>				
+		</TR>	
+	</TABLE>		
 </CENTER>
+
+
 </BODY>
 </HTML>
