@@ -27,7 +27,7 @@ public class CustomerReport {
     for ( int cust_idx = 0;
           cust_idx < Banco.getNumOfCustomers();
           cust_idx++ ) {
-      Customer customer = Banco.getCustomer(cust_idx);
+      Cliente customer = Banco.getCliente(cust_idx);
 
       // Print the customer's name
       System.out.println();

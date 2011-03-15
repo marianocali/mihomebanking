@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Banco
 {
-    private static List <Customer> customers;
+    private static List <Cliente> clientes;
 
    static
    {
-       customers = new ArrayList <Customer>(10);
+       clientes = new ArrayList <Cliente>(10);
    }
 
    private Banco()
@@ -19,8 +19,8 @@ public class Banco
 
    public static void addCustomer(String f, String l)
    {
-       Customer c = new Customer(f,l);
-       customers.add(c);
+       Cliente c = new Cliente();
+       clientes.add(c);
    }
 
    public static int getNumOfCustomers()
