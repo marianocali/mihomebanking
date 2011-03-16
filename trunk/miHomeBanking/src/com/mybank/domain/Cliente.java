@@ -1,15 +1,24 @@
+/*
+ *  cuentaCorrienteNro y cajaDeAhorroNro fijarse si los hacemos nros o String
+ */
+
 package com.mybank.domain;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.sql.*;
 
-public class Cliente {
+public class Cliente 
+{
 	String id;
 	String apellido;
 	String nombre;
 	String documento;
-	String cajaDeAhorro;
-	String cuentaCorriente;
+	String cajaDeAhorroNro;			//aquí se sabe el nro de la caja de ahorro
+	
+	String cuentaCorrienteNro;
+	CajaDeAhorro cajaDeAhorro;			//un cliente puede tener hasta una caja de ahorro
+	CuentaCorriente cuentaCorriente;
 
 	public Cliente(String apellido, String nombre, String documento) {
 		this.apellido = apellido;
@@ -61,20 +70,87 @@ public class Cliente {
 		this.documento = documento;
 	}
 
-	public String getCajaDeAhorro() {
+	public String getCajaDeAhorroNro() {
+		return cajaDeAhorroNro;
+	}
+
+	public void setCajaDeAhorroNro(String cajaDeAhorroNro) 
+	{
+		this.cajaDeAhorroNro = cajaDeAhorroNro;
+	}
+
+	public String getCuentaCorrienteNro() {
+		return cuentaCorrienteNro;
+	}
+
+	public void setCuentaCorrienteNro(String cuentaCorrienteNro) {
+		this.cuentaCorrienteNro = cuentaCorrienteNro;
+	}
+
+	
+	public CajaDeAhorro getCajaDeAhorro() {
 		return cajaDeAhorro;
 	}
 
-	public void setCajaDeAhorro(String cajaDeAhorro) {
+	
+	
+	public void setCajaDeAhorro(CajaDeAhorro cajaDeAhorro) {
 		this.cajaDeAhorro = cajaDeAhorro;
 	}
 
-	public String getCuentaCorriente() {
+	public CuentaCorriente getCuentaCorriente() {
 		return cuentaCorriente;
 	}
 
-	public void setCuentaCorriente(String cuentaCorriente) {
+	public void setCuentaCorriente(CuentaCorriente cuentaCorriente) {
 		this.cuentaCorriente = cuentaCorriente;
 	}
 
+	public void cargarCliente(int idCliente)	
+	{	
+		try 
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("JDBC driver loaded");
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			System.out.println(e.toString());
+		}
+		
+		String sql = "SELECT * FROM CLIENTES WHERE ID = '" + idCliente + "'";
+
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+
+			while (rs.next()) 
+			{
+				this.setApellido(rs.getString(2));
+				this.setNombre(rs.getString(3));
+				this.setDocumento(rs.getString(4));
+				this.setCajaDeAhorroNro(rs.getString(5));
+				this.setCuentaCorrienteNro(rs.getString(6));
+				
+				if (this.getCajaDeAhorroNro() != null)
+				{
+					cajaDeAhorro = new CajaDeAhorro();
+					this.cajaDeAhorro.cargarCajaAhorro(this.cajaDeAhorroNro);
+				}
+			}
+			rs.close();
+			s.close();
+			con.close();
+		}		
+		catch (SQLException e) 
+		{
+		} 
+		catch (Exception e) 
+		{
+		}
+	}
 }
+	
