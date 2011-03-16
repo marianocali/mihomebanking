@@ -5,8 +5,21 @@ package com.mybank.domain;
 public abstract class Cuenta
 {
     protected double saldo;
+    protected int numero;
 
-    protected Cuenta()
+    public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	protected Cuenta()
     {
 
     }
