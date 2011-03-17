@@ -45,14 +45,17 @@
 				out.println("<TD>" + elCliente.getCajaDeAhorro().getSaldo() + "</TD>");  
 			%>
 		<td>			
-			<input type="text" >
+			<input type="text" name=montoIngresado >
 		</td>	 	
 	</TR>
 	<TR>
-		<Td>monto </Td>
-			<Td>
-				<input type="button" value="guardar" >
+		<Td>  </Td>
+			<Td>			
+				<input align= left type="button" value="Efectuar deposito" >
+				
+				<input align = right type="button" value="Cancelar"  onclick="location.href='mostrarCuentasCliente.jsp'">
 			</Td>
+			
 	</TR>
 		
 	</TABLE>
