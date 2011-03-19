@@ -3,6 +3,65 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
+  <!-- Define servlet-mapped and path-mapped filters -->
+  
+  <filter>
+    <filter-name> Logging Filter </filter-name>
+    <filter-class> bkc0704.LoggingFilter </filter-class>
+  </filter>
+
+  <!-- Define filter mappings for the defined filters -->
+  <filter-mapping>
+    <filter-name> Logging Filter </filter-name>
+    <servlet-name> FilteredServlet4 </servlet-name>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name> FilteredServlet4 </servlet-name>
+    <servlet-class> bkc0706.FilteredServlet4 </servlet-class>
+  </servlet>
+
+
+<!--                              **********************************   -->
+
+  <filter>
+    <filter-name>Basic Filter</filter-name>
+    <filter-class>
+      bkc0701.BasicFilter
+    </filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>Basic Filter</filter-name>
+    <servlet-name>FilteredServlet</servlet-name>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>Basic Filter</filter-name>
+    <servlet-name>FilteredServlet2</servlet-name>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>FilteredServlet2</servlet-name>
+    <servlet-class>bkc0702.FilteredServlet2</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>FilteredServlet2</servlet-name>
+    <url-pattern>/bkc0702</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>FilteredServlet</servlet-name>
+    <servlet-class>bkc0702bis.FilteredServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilteredServlet</servlet-name>
+    <url-pattern>/bkc0702bis</url-pattern>
+  </servlet-mapping>
+
+
+
 	
 	<servlet>
 		<servlet-name>login</servlet-name>
@@ -14,17 +73,17 @@
 	</servlet-mapping>
 </web-app>
 
-<!--
-	<!DOCTYPE web-app
-	  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-	  "http://java.sun.com/dtd/web-app_2_3.dtd">
-	
-	<web-app>
-	  <display-name>template</display-name>
-	  <taglib>
-	    <taglib-uri>/myTLD</taglib-uri> 
-	    <taglib-location>/WEB-INF/taglib.tld</taglib-location> 
-	  </taglib>
-	</web-app>
 
--->	
+
+<!--	<!DOCTYPE web-app-->
+<!--	  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"-->
+<!--	  "http://java.sun.com/dtd/web-app_2_3.dtd">-->
+<!--	-->
+<!--	<web-app>-->
+<!--	  <display-name>template</display-name>-->
+<!--	  <taglib>-->
+<!--	    <taglib-uri>/myTLD</taglib-uri> -->
+<!--	    <taglib-location>/WEB-INF/taglib.tld</taglib-location> -->
+<!--	  </taglib>-->
+<!--	</web-app>-->
+

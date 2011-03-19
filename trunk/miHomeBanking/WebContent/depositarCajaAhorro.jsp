@@ -2,6 +2,7 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
 <%
+	
 	HttpSession session = request.getSession();
 	if (session == null) {
 		System.out.println("session es null, no esta creada la sesion");
@@ -18,7 +19,8 @@
 	String id = (String) session.getAttribute("ID");
 	Cliente elCliente = new Cliente(id);
 	elCliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
-		
+	
+
 %>
 
 <HTML>
@@ -44,7 +46,11 @@
 			<%	
 				out.println("<TD>" + elCliente.getCajaDeAhorro().getSaldo() + "</TD>");  
 			%>
-		<td>			
+		<td>
+			<FORM METHOD=POST ACTION=SimplePage.jsp>
+				<INPUT TYPE=TEXT NAME=memoryHtml>
+				<INPUT TYPE=SUBMIT>
+			</FORM>			
 			<input type="text" name=montoIngresado >
 		</td>	 	
 	</TR>
