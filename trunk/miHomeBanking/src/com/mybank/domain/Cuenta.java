@@ -1,6 +1,12 @@
 // MAXIMIZAR LA VENTANA SHIFT + ESC
 package com.mybank.domain;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 public abstract class Cuenta
 {
@@ -34,11 +40,53 @@ public abstract class Cuenta
         return saldo;
     }
 
-    public void deposito (double monto)
-    {
-        saldo = saldo + monto;       
-    }
+//    public void deposito (double monto)
+//    {
+//        saldo = saldo + monto;       
+//    }
 
+    public void deposito(double monto)
+	{
+        saldo = saldo + monto;	
+		try 
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("JDBC driver loaded");
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			System.out.println(e.toString());
+		}
+		
+		String sql = "UPDATE CUENTAS " +
+					" SET SALDO " +
+					" WHERE NUMERO = '" + this.numero + "'";
+
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+
+			while (rs.next()) 
+			{
+				this.setNumero(Integer.parseInt(rs.getString(1)));
+				this.setSaldo(Double.parseDouble(rs.getString(4)));				
+			}
+			rs.close();
+			s.close();
+			con.close();
+		}
+		catch (SQLException e) 
+		{
+		} 
+		catch (Exception e) 
+		{
+		}
+	}
+
+    
     public abstract void extraccion (double monto) throws SobregiroException;
     
 }
