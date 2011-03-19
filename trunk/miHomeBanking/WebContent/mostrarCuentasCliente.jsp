@@ -49,8 +49,8 @@
 				elCliente.setApellido(rs.getString(2));
 				elCliente.setNombre(rs.getString(3));
 				elCliente.setDocumento(rs.getString(4));
-				elCliente.setCajaDeAhorroNro(rs.getString(5));
-				elCliente.setCuentaCorrienteNro(rs.getString(6));
+//				elCliente.setCajaDeAhorro(rs.getString(5));
+//				elCliente.setCuentaCorriente(rs.getString(6));
 	
 			}		
 		

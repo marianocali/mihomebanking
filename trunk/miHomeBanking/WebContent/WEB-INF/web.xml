@@ -5,64 +5,64 @@
 	id="WebApp_ID" version="2.5">
   <!-- Define servlet-mapped and path-mapped filters -->
   
-  <filter>
-    <filter-name> Logging Filter </filter-name>
-    <filter-class> bkc0704.LoggingFilter </filter-class>
-  </filter>
-
-  <!-- Define filter mappings for the defined filters -->
-  <filter-mapping>
-    <filter-name> Logging Filter </filter-name>
-    <servlet-name> FilteredServlet4 </servlet-name>
-  </filter-mapping>
-
-  <servlet>
-    <servlet-name> FilteredServlet4 </servlet-name>
-    <servlet-class> bkc0706.FilteredServlet4 </servlet-class>
-  </servlet>
+<!--  <filter>-->
+<!--    <filter-name> Logging Filter </filter-name>-->
+<!--    <filter-class> bkc0704.LoggingFilter </filter-class>-->
+<!--  </filter>-->
+<!---->
+   Define filter mappings for the defined filters 
+<!--  <filter-mapping>-->
+<!--    <filter-name> Logging Filter </filter-name>-->
+<!--    <servlet-name> FilteredServlet4 </servlet-name>-->
+<!--  </filter-mapping>-->
+<!---->
+<!--  <servlet>-->
+<!--    <servlet-name> FilteredServlet4 </servlet-name>-->
+<!--    <servlet-class> bkc0706.FilteredServlet4 </servlet-class>-->
+<!--  </servlet>-->
 
 
 <!--                              **********************************   -->
-
-  <filter>
-    <filter-name>Basic Filter</filter-name>
-    <filter-class>
-      bkc0701.BasicFilter
-    </filter-class>
-  </filter>
-
-  <filter-mapping>
-    <filter-name>Basic Filter</filter-name>
-    <servlet-name>FilteredServlet</servlet-name>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>Basic Filter</filter-name>
-    <servlet-name>FilteredServlet2</servlet-name>
-  </filter-mapping>
-
-  <servlet>
-    <servlet-name>FilteredServlet2</servlet-name>
-    <servlet-class>bkc0702.FilteredServlet2</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>FilteredServlet2</servlet-name>
-    <url-pattern>/bkc0702</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>FilteredServlet</servlet-name>
-    <servlet-class>bkc0702bis.FilteredServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FilteredServlet</servlet-name>
-    <url-pattern>/bkc0702bis</url-pattern>
-  </servlet-mapping>
-
-
-
-	
+<!---->
+<!--  <filter>-->
+<!--    <filter-name>Basic Filter</filter-name>-->
+<!--    <filter-class>-->
+<!--      bkc0701.BasicFilter-->
+<!--    </filter-class>-->
+<!--  </filter>-->
+<!---->
+<!--  <filter-mapping>-->
+<!--    <filter-name>Basic Filter</filter-name>-->
+<!--    <servlet-name>FilteredServlet</servlet-name>-->
+<!--  </filter-mapping>-->
+<!---->
+<!--  <filter-mapping>-->
+<!--    <filter-name>Basic Filter</filter-name>-->
+<!--    <servlet-name>FilteredServlet2</servlet-name>-->
+<!--  </filter-mapping>-->
+<!---->
+<!--  <servlet>-->
+<!--    <servlet-name>FilteredServlet2</servlet-name>-->
+<!--    <servlet-class>bkc0702.FilteredServlet2</servlet-class>-->
+<!--  </servlet>-->
+<!---->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>FilteredServlet2</servlet-name>-->
+<!--    <url-pattern>/bkc0702</url-pattern>-->
+<!--  </servlet-mapping>-->
+<!---->
+<!--  <servlet>-->
+<!--    <servlet-name>FilteredServlet</servlet-name>-->
+<!--    <servlet-class>bkc0702bis.FilteredServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>FilteredServlet</servlet-name>-->
+<!--    <url-pattern>/bkc0702bis</url-pattern>-->
+<!--  </servlet-mapping>-->
+<!---->
+<!---->
+<!---->
+<!--	-->
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<servlet-class>com.mybank.domain.SessionLoginServlet</servlet-class>

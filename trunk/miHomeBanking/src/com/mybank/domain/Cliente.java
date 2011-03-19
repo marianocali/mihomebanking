@@ -8,16 +8,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
 
-public class Cliente 
-{
+public class Cliente {
 	String id;
 	String apellido;
 	String nombre;
 	String documento;
-	String cajaDeAhorroNro;			//aquí se sabe el nro de la caja de ahorro
-	
-	String cuentaCorrienteNro;
-	CajaDeAhorro cajaDeAhorro;			//un cliente puede tener hasta una caja de ahorro
+	CajaDeAhorro cajaDeAhorro; // un cliente puede tener hasta una caja de
+								// ahorro
 	CuentaCorriente cuentaCorriente;
 
 	public Cliente(String apellido, String nombre, String documento) {
@@ -25,10 +22,12 @@ public class Cliente
 		this.nombre = nombre;
 		this.documento = documento;
 	}
-	
-	public String toString ()
-	{
-		return "ID: "+  id + ", Apellido: " + apellido + ", Nombre: " + nombre + ", Documento: " + documento + ", Caja de Ahorro: " + cajaDeAhorro + ", Cuenta Corriente: " + cuentaCorriente + "\n ";
+
+	public String toString() {
+		return "ID: " + id + ", Apellido: " + apellido + ", Nombre: " + nombre
+				+ ", Documento: " + documento + ", Caja de Ahorro: "
+				+ cajaDeAhorro + ", Cuenta Corriente: " + cuentaCorriente
+				+ "\n ";
 	};
 
 	public Cliente() {
@@ -70,30 +69,10 @@ public class Cliente
 		this.documento = documento;
 	}
 
-	public String getCajaDeAhorroNro() {
-		return cajaDeAhorroNro;
-	}
-
-	public void setCajaDeAhorroNro(String cajaDeAhorroNro) 
-	{
-		this.cajaDeAhorroNro = cajaDeAhorroNro;
-	}
-
-	public String getCuentaCorrienteNro() {
-		return cuentaCorrienteNro;
-	}
-
-	public void setCuentaCorrienteNro(String cuentaCorrienteNro) {
-		this.cuentaCorrienteNro = cuentaCorrienteNro;
-	}
-
-	
 	public CajaDeAhorro getCajaDeAhorro() {
 		return cajaDeAhorro;
 	}
 
-	
-	
 	public void setCajaDeAhorro(CajaDeAhorro cajaDeAhorro) {
 		this.cajaDeAhorro = cajaDeAhorro;
 	}
@@ -106,51 +85,39 @@ public class Cliente
 		this.cuentaCorriente = cuentaCorriente;
 	}
 
-	public void cargarCliente(int idCliente)	
-	{	
-		try 
-		{
+	public void cargarCliente(int idCliente) {
+		this.setId(Integer.toString(idCliente));
+		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("JDBC driver loaded");
-		} 
-		catch (ClassNotFoundException e) 
-		{
+		} catch (ClassNotFoundException e) {
 			System.out.println(e.toString());
 		}
-		
+
 		String sql = "SELECT * FROM CLIENTES WHERE ID = '" + idCliente + "'";
 
-		try 
-		{
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+		try {
+			Connection con = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 
 			Statement s = con.createStatement();
 			ResultSet rs = s.executeQuery(sql);
 
-			while (rs.next()) 
-			{
+			while (rs.next()) {
 				this.setApellido(rs.getString(2));
 				this.setNombre(rs.getString(3));
 				this.setDocumento(rs.getString(4));
-				this.setCajaDeAhorroNro(rs.getString(5));
-				this.setCuentaCorrienteNro(rs.getString(6));
-				
-				if (this.getCajaDeAhorroNro() != null)
-				{
+				String nroCajaDeAhorro = rs.getString(5);
+				if (nroCajaDeAhorro != null) {
 					cajaDeAhorro = new CajaDeAhorro();
-					this.cajaDeAhorro.cargarCajaAhorro(this.cajaDeAhorroNro);
+					cajaDeAhorro.cargarCajaAhorro(nroCajaDeAhorro);
 				}
 			}
 			rs.close();
 			s.close();
 			con.close();
-		}		
-		catch (SQLException e) 
-		{
-		} 
-		catch (Exception e) 
-		{
+		} catch (SQLException e) {
+		} catch (Exception e) {
 		}
 	}
 }
-	

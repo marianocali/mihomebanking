@@ -19,6 +19,7 @@
 	String id = (String) session.getAttribute("ID");
 	Cliente elCliente = new Cliente(id);
 	elCliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
+	System.out.println(elCliente);
 	
 
 %>
@@ -68,7 +69,7 @@
 	</CENTER>
 
 	<%
-		elCliente.getCajaDeAhorro().deposito();
+		elCliente.getCajaDeAhorro().deposito(50);
 	%>
 </body>
 </html>
