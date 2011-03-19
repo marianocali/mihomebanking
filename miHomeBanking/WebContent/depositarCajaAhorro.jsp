@@ -40,32 +40,35 @@
 <TABLE border=1 >
 	<TR>
 		<TH> <h3>su saldo actual</h3></TH>
-		<TH>  <h3>Ingrese el monto que desea depositar  </h3></TH>		
+		<TH>  <h3>Ingrese el monto a depositar  </h3></TH>		
 	</TR>
 	<TR>		
 			<%	
 				out.println("<TD>" + elCliente.getCajaDeAhorro().getSaldo() + "</TD>");  
 			%>
 		<td>
-			<FORM METHOD=POST ACTION=SimplePage.jsp>
-				<INPUT TYPE=TEXT NAME=memoryHtml>
-				<INPUT TYPE=SUBMIT>
-			</FORM>			
-			<input type="text" name=montoIngresado >
+			<FORM METHOD=POST ACTION=depositarCajaAhorro.jsp>
+				
+				<input type="text" name=montoIngresado >
+				
+			</FORM>
 		</td>	 	
 	</TR>
 	<TR>
 		<Td>  </Td>
-			<Td>			
-				<input align= left type="button" value="Efectuar deposito" >
+			<Td>
+				<INPUT TYPE=SUBMIT>			
+<!--				 <input align= left type="button" value="Efectuar deposito" >-->
 				
-				<input align = right type="button" value="Cancelar"  onclick="location.href='mostrarCuentasCliente.jsp'">
+				<input align = "RIGHT" type="button" value="Cancelar"  onclick="location.href='mostrarCuentasCliente.jsp'">
 			</Td>
 			
-	</TR>
-		
+	</TR>		
 	</TABLE>
-		</CENTER>
+	</CENTER>
 
+	<%
+		elCliente.getCajaDeAhorro().deposito();
+	%>
 </body>
 </html>
