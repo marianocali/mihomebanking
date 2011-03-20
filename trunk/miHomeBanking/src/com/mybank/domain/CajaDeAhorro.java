@@ -13,15 +13,7 @@ public class CajaDeAhorro extends Cuenta {
 	{
 	}
 
-	public void extraccion(double monto) throws SobregiroException {
-		if (saldo > monto) {
-			saldo -= monto;
-		} else {
-			throw new SobregiroException(
-					"Fondos insuficientes para la extracción requerida ", monto
-							- saldo);
-		}
-	}
+
 	
 	public void cargarCajaAhorro(String nroCajaAhorro)
 	{
@@ -57,4 +49,48 @@ public class CajaDeAhorro extends Cuenta {
 		{
 		}
 	}
+	
+	 public void extraccion(double monto)
+		{
+		 	if (saldo > monto) 
+		 	{				
+				saldo = saldo - monto;		 	
+				try 
+				{
+					Class.forName("oracle.jdbc.driver.OracleDriver");
+					System.out.println("JDBC driver loaded");
+				} 
+				catch (ClassNotFoundException e) 
+				{
+					System.out.println(e.toString());
+				}
+				
+				String sql = "UPDATE CUENTAS " +
+							" SET SALDO = '" + saldo + 
+							"' WHERE NUMERO = '" + this.numero + "'";
+	
+				try 
+				{
+					Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+	
+					Statement s = con.createStatement();
+					s.executeUpdate(sql);
+					s.close();
+					con.close();
+					
+				}
+				catch (SQLException e) 
+				{
+				} 
+				catch (Exception e) 
+				{
+				}
+		 	}
+		 	else
+		 	{
+		 		//mostrar mensaje saldo insuficiente.
+		 		
+		 	}
+		}
+
 }
