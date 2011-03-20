@@ -50,10 +50,12 @@ public class CajaDeAhorro extends Cuenta {
 		}
 	}
 	
-	 public void extraccion(double monto)
+	 public boolean extraccion(double monto)
 		{
+		 	boolean isOk = false;
 		 	if (saldo > monto) 
-		 	{				
+		 	{
+		 		isOk = true;
 				saldo = saldo - monto;		 	
 				try 
 				{
@@ -91,6 +93,7 @@ public class CajaDeAhorro extends Cuenta {
 		 		//mostrar mensaje saldo insuficiente.
 		 		
 		 	}
+		 	return isOk;
 		}
 
 }

@@ -54,6 +54,20 @@
 		%>
 		<Td><A href="depositarCajaAhorro.jsp"> Depositar </A> / <A href="extraerCajaAhorro.jsp"> Extraer </A></Td>
 	</TR>
+	<TR>
+		<Td>Cuenta Corriente</Td>
+
+		<%
+			if (elCliente.getCuentaCorriente() != null) {
+				out.println("<TD>" + elCliente.getCuentaCorriente().getSaldo()
+						+ "</TD>");
+			}
+		%>
+		<%
+			// out.println("<TD>" + cajaDeAhorro.getSaldo() + "</TD>");
+		%>
+		<Td><A href="depositarCuentaCorriente.jsp"> Depositar </A> / <A href="extraerCuentaCorriente.jsp"> Extraer </A></Td>
+	</TR>
 </TABLE>
 </CENTER>
 

@@ -112,6 +112,11 @@ public class Cliente {
 					cajaDeAhorro = new CajaDeAhorro();
 					cajaDeAhorro.cargarCajaAhorro(nroCajaDeAhorro);
 				}
+				String nroCuentaCorriente = rs.getString(6);
+				if (nroCajaDeAhorro != null) {
+					cuentaCorriente = new CuentaCorriente();
+					cuentaCorriente.cargarCuentaCorriente(nroCuentaCorriente);
+				}
 			}
 			rs.close();
 			s.close();
