@@ -34,7 +34,7 @@
 	out.println("<TD>" + elCliente.getNombre() + "</TD>");
 %>
 </h2>
-<FORM METHOD=POST ACTION=MostrarResultadoDeposito.jsp>
+<FORM METHOD=POST ACTION=mostrarResultadoDeposito.jsp>
 
 <TABLE border=1>
 	<TR>
