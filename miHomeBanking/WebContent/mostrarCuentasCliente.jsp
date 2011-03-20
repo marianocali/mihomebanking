@@ -44,7 +44,7 @@
 			Statement s = con.createStatement();
 			ResultSet rs = s.executeQuery(sql);
 	
-			while (rs.next()) {
+			if (rs.next()) {
 	
 				elCliente.setApellido(rs.getString(2));
 				elCliente.setNombre(rs.getString(3));

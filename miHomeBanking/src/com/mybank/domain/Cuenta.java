@@ -59,24 +59,20 @@ public abstract class Cuenta
 		}
 		
 		String sql = "UPDATE CUENTAS " +
-					" SET SALDO " +
-					" WHERE NUMERO = '" + this.numero + "'";
+					" SET SALDO = '" + saldo + 
+					"' WHERE NUMERO = '" + this.numero + "'";
 
 		try 
 		{
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery(sql);
 
-			while (rs.next()) 
-			{
-				this.setNumero(Integer.parseInt(rs.getString(1)));
-				this.setSaldo(Double.parseDouble(rs.getString(4)));				
-			}
-			rs.close();
+			s.executeUpdate(sql);
+
 			s.close();
 			con.close();
+			
 		}
 		catch (SQLException e) 
 		{
