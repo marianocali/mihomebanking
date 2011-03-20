@@ -83,6 +83,6 @@ public abstract class Cuenta
 	}
 
     
-    public abstract void extraccion (double monto) throws SobregiroException;
+    public abstract boolean extraccion (double monto) throws SobregiroException;
     
 }

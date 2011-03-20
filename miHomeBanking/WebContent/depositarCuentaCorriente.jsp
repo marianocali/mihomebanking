@@ -17,23 +17,24 @@
 	String id = (String) session.getAttribute("ID");
 	Cliente elCliente = new Cliente(id);
 	elCliente.cargarCliente(Integer.parseInt(id)); //carga el cliente con sus cuentas
+	//System.out.println(elCliente);
 %>
 
 <HTML>
 <HEAD>
-<TITLE>Extracci&oacute;n Caja de Ahorro</TITLE>
+<TITLE>Deposito Cuenta Corriente</TITLE>
 </HEAD>
 <BODY>
 <CENTER><BR>
 <BR>
 <BR>
 
-<h2>Extracci&oacute;n en Caja de Ahorro de <%
+<h2>Deposito en Cuenta Corriente de <%
 	out.println("<TD>" + elCliente.getApellido() + "</TD>");
 	out.println("<TD>" + elCliente.getNombre() + "</TD>");
 %>
 </h2>
-<FORM METHOD=POST ACTION=mostrarResultadoExtraccion.jsp>
+<FORM METHOD=POST ACTION=mostrarResultadoDepositoCuentaCorriente.jsp>
 
 <TABLE border=1>
 	<TR>
@@ -41,22 +42,29 @@
 		<h3>su saldo actual</h3>
 		</TH>
 		<TH>
-		<h3>Ingrese el monto a retirar</h3>
+		<h3>sobregiro </h3>
+		</TH>
+		
+		<TH>
+		<h3>Ingrese el monto a depositar</h3>
 		</TH>
 	</TR>
 	<TR>
 		<%
-			out.println("<TD>" + elCliente.getCajaDeAhorro().getSaldo()
+			out.println("<TD>" + elCliente.getCuentaCorriente().getSaldo()
 					+ "</TD>");
+		
+			out.println("<TD>" + elCliente.getCuentaCorriente().getSobregiro()
+				+ "</TD>");
+		
 		%>
 		<td><input type="text" name=montoIngresado></td>
 	</TR>
 	<TR>
-		<Td colspan = 2 align="center"> 
-			<INPUT TYPE=SUBMIT> 
-			<input type="button" value="Cancelar"
+		<Td colspan=3 align="center"><INPUT TYPE=SUBMIT> 
+		<input type="button" value="Cancelar"
 			onclick="location.href = 'mostrarCuentasCliente.jsp'";
-		></Td>
+></Td>
 
 	</TR>
 
