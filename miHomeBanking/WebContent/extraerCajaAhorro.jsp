@@ -22,19 +22,19 @@
 
 <HTML>
 <HEAD>
-<TITLE>Deposito Caja de Ahorro</TITLE>
+<TITLE>Extracci&oacute;n Caja de Ahorro</TITLE>
 </HEAD>
 <BODY>
 <CENTER><BR>
 <BR>
 <BR>
 
-<h2>Deposito en Caja de Ahorro de <%
+<h2>Extracci&oacute;n en Caja de Ahorro de <%
 	out.println("<TD>" + elCliente.getApellido() + "</TD>");
 	out.println("<TD>" + elCliente.getNombre() + "</TD>");
 %>
 </h2>
-<FORM METHOD=POST ACTION=MostrarResultadoDeposito.jsp>
+<FORM METHOD=POST ACTION=mostrarResultadoExtraccion.jsp>
 
 <TABLE border=1>
 	<TR>
@@ -42,7 +42,7 @@
 		<h3>su saldo actual</h3>
 		</TH>
 		<TH>
-		<h3>Ingrese el monto a depositar</h3>
+		<h3>Ingrese el monto a retirar</h3>
 		</TH>
 	</TR>
 	<TR>
@@ -54,7 +54,7 @@
 	</TR>
 	<TR>
 		<Td></Td>
-		<Td><INPUT TYPE=SUBMIT> <!--				 <input align= left type="button" value="Efectuar deposito" >-->
+		<Td><INPUT TYPE=SUBMIT> 
 
 		<input align="RIGHT" type="button" value="Cancelar"
 			onclick="location.href = 'mostrarCuentasCliente.jsp'";

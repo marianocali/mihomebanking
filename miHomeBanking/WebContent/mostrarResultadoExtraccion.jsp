@@ -22,17 +22,17 @@
 
 	double montoIngresado = Double.parseDouble((String) request.getParameter("montoIngresado"));
 	
-	elCliente.getCajaDeAhorro().deposito(montoIngresado);
+	elCliente.getCajaDeAhorro().extraccion(montoIngresado);
 
 %>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mostrar Resultado Depósito</title>
+<title>Mostrar Resultado Extracci&oacute;n</title>
 </head>
 <body>
-		<h3 align="center"> Su depósito fue realizado y su nuevo saldo es de: 
+		<h3 align="center"> Su extracci&oacute;n fue realizada y su nuevo saldo es de: 
 		<% out.println(elCliente.getCajaDeAhorro().getSaldo() ); %>
 		</h3>
 				
