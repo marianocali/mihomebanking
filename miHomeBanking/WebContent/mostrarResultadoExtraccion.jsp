@@ -21,8 +21,12 @@
 	elCliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
 
 	double montoIngresado = Double.parseDouble((String) request.getParameter("montoIngresado"));
-	
-	elCliente.getCajaDeAhorro().extraccion(montoIngresado);
+	String mensajeOperacion = "";
+	boolean isExtraccionExitosa = elCliente.getCajaDeAhorro().extraccion(montoIngresado);
+	if (!isExtraccionExitosa)
+		mensajeOperacion = "Su operación no pudo ser procesada, su saldo es de: " + elCliente.getCajaDeAhorro().getSaldo() + " y Usted quiso retirar " + montoIngresado;
+	else
+		mensajeOperacion = "Su operación fue realizada con exito y su nuevo saldo es de: " + elCliente.getCajaDeAhorro().getSaldo();
 
 %>
 
@@ -32,9 +36,7 @@
 <title>Mostrar Resultado Extracci&oacute;n</title>
 </head>
 <body>
-		<h3 align="center"> Su extracci&oacute;n fue realizada y su nuevo saldo es de: 
-		<% out.println(elCliente.getCajaDeAhorro().getSaldo() ); %>
-		</h3>
+		<h3 align="center"> <% out.println(mensajeOperacion); %></h3>
 				
 				<input type="button" value="Volver"  onclick="location.href='mostrarCuentasCliente.jsp'">
 </body>
