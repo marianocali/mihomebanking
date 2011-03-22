@@ -1,3 +1,4 @@
+<jsp:useBean id="cliente" class="com.mybank.domain.ClienteBean"/>
 <%@ page session="false"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
@@ -15,8 +16,7 @@
 	}
 
 	String id = (String) session.getAttribute("ID");
-	Cliente elCliente = new Cliente(id);
-	elCliente.cargarCliente(Integer.parseInt(id)); //carga el cliente con sus cuentas
+	cliente.cargarCliente(Integer.parseInt(id)); //carga el cliente con sus cuentas
 	//System.out.println(elCliente);
 %>
 
@@ -30,8 +30,8 @@
 <BR>
 
 <h2>Deposito en Cuenta Corriente de <%
-	out.println("<TD>" + elCliente.getApellido() + "</TD>");
-	out.println("<TD>" + elCliente.getNombre() + "</TD>");
+	out.println("<TD>" + cliente.getApellido() + "</TD>");
+	out.println("<TD>" + cliente.getNombre() + "</TD>");
 %>
 </h2>
 <FORM METHOD=POST ACTION=mostrarResultadoDepositoCuentaCorriente.jsp>
@@ -51,10 +51,10 @@
 	</TR>
 	<TR>
 		<%
-			out.println("<TD>" + elCliente.getCuentaCorriente().getSaldo()
+			out.println("<TD>" + cliente.getCuentaCorriente().getSaldo()
 					+ "</TD>");
 		
-			out.println("<TD>" + elCliente.getCuentaCorriente().getSobregiro()
+			out.println("<TD>" + cliente.getCuentaCorriente().getSobregiro()
 				+ "</TD>");
 		
 		%>

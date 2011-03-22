@@ -1,3 +1,4 @@
+<jsp:useBean id="cliente" class="com.mybank.domain.ClienteBean"/>
 <%@ page session="false"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
@@ -17,16 +18,15 @@
 	}
 
 	String id = (String) session.getAttribute("ID");
-	Cliente elCliente = new Cliente(id);
-	elCliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
+	cliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
 
 	double montoIngresado = Double.parseDouble((String) request.getParameter("montoIngresado"));
 	String mensajeOperacion = "";
-	boolean isExtraccionExitosa = elCliente.getCajaDeAhorro().extraccion(montoIngresado);
+	boolean isExtraccionExitosa = cliente.getCajaDeAhorro().extraccion(montoIngresado);
 	if (!isExtraccionExitosa)
-		mensajeOperacion = "Su operación no pudo ser procesada, su saldo es de: " + elCliente.getCajaDeAhorro().getSaldo() + " y Usted quiso retirar " + montoIngresado;
+		mensajeOperacion = "Su operación no pudo ser procesada, su saldo es de: " + cliente.getCajaDeAhorro().getSaldo() + " y Usted quiso retirar " + montoIngresado;
 	else
-		mensajeOperacion = "Su operación fue realizada con exito y su nuevo saldo es de: " + elCliente.getCajaDeAhorro().getSaldo();
+		mensajeOperacion = "Su operación fue realizada con exito y su nuevo saldo es de: " + cliente.getCajaDeAhorro().getSaldo();
 
 %>
 
