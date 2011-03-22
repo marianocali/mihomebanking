@@ -5,7 +5,7 @@ import java.sql.*;
 public class CajaDeAhorro extends Cuenta {
 	private double tasaDeInteres;
 
-	public CajaDeAhorro(double saldoInicial, double tasaDeInteres) {
+	public CajaDeAhorro (double saldoInicial, double tasaDeInteres) {
 		super(saldoInicial);
 		this.tasaDeInteres = tasaDeInteres;
 	}
