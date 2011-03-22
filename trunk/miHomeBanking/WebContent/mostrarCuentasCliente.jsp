@@ -1,6 +1,8 @@
+<jsp:useBean id="cliente" class="com.mybank.domain.ClienteBean"/>
 <%@ page session="false"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
+
 <%
 	HttpSession session = request.getSession();
 	if (session == null) {
@@ -13,8 +15,7 @@
 	}
 
 	String id = (String) session.getAttribute("ID");
-	Cliente elCliente = new Cliente(id);
-	elCliente.cargarCliente(Integer.parseInt(id));
+	cliente.cargarCliente(Integer.parseInt(id));
 %>
 <HTML>
 <HEAD>
@@ -28,8 +29,8 @@
 <%%>
 
 <h2>Bienvenido <%
-	out.println("<TD>" + elCliente.getApellido() + "</TD>");
-	out.println("<TD>" + elCliente.getNombre() + "</TD>");
+	out.println("<TD>" + cliente.getApellido() + "</TD>");
+	out.println("<TD>" + cliente.getNombre() + "</TD>");
 %>
 </h2>
 <h3>Estas son sus cuentas:</h3>
@@ -44,13 +45,13 @@
 		<Td>Caja de Ahorro</Td>
 
 		<%
-			if (elCliente.getCajaDeAhorro() != null) {
-				out.println("<TD>" + elCliente.getCajaDeAhorro().getSaldo()
+			if (cliente.getCajaDeAhorro() != null) {
+				out.println("<TD>" + cliente.getCajaDeAhorro().getSaldo()
 						+ "</TD>");
 			}
 		%>
 		<%
-			// out.println("<TD>" + cajaDeAhorro.getSaldo() + "</TD>");
+		// out.println("<TD>" + cajaDeAhorro.getSaldo() + "</TD>");
 		%>
 		<Td><A href="depositarCajaAhorro.jsp"> Depositar </A> / <A href="extraerCajaAhorro.jsp"> Extraer </A></Td>
 	</TR>
@@ -58,8 +59,8 @@
 		<Td>Cuenta Corriente</Td>
 
 		<%
-			if (elCliente.getCuentaCorriente() != null) {
-				out.println("<TD>" + elCliente.getCuentaCorriente().getSaldo()
+			if (cliente.getCuentaCorriente() != null) {
+				out.println("<TD>" + cliente.getCuentaCorriente().getSaldo()
 						+ "</TD>");
 			}
 		%>
