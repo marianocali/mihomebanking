@@ -1,3 +1,4 @@
+<jsp:useBean id="cliente" class="com.mybank.domain.ClienteBean"/>
 <%@ page session="false"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
@@ -17,12 +18,11 @@
 	}
 
 	String id = (String) session.getAttribute("ID");
-	Cliente elCliente = new Cliente(id);
-	elCliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
+	cliente.cargarCliente(Integer.parseInt(id));		//carga el cliente con sus cuentas
 
 	double montoIngresado = Double.parseDouble((String) request.getParameter("montoIngresado"));
 	
-	elCliente.getCuentaCorriente().deposito(montoIngresado);
+	cliente.getCuentaCorriente().deposito(montoIngresado);
 
 %>
 
@@ -33,7 +33,7 @@
 </head>
 <body>
 		<h3 align="center"> Su depósito fue realizado y su nuevo saldo es de: 
-		<% out.println(elCliente.getCuentaCorriente().getSaldo() ); %>
+		<% out.println(cliente.getCuentaCorriente().getSaldo() ); %>
 		</h3>
 				
 				<input type="button" value="Volver"  onclick="location.href='mostrarCuentasCliente.jsp'">
