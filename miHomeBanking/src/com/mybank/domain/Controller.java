@@ -27,44 +27,44 @@ public class Controller extends HttpServlet {
 
 		String base = "/";
 		String url = base + "login.jsp";
+		String action = request.getParameter("action");
+		System.out.println(action);
 
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		if (validador.login(userName, password)) {
-			// send cookie to the browser
-			HttpSession session = request.getSession(true);
-			session.setAttribute("loggedIn", new String("true"));
-			session.setAttribute("ID", new String(validador.getIdCliente(userName)));
-			url = base + "mostrarCuentasCliente.jsp";
-		} else {
-			// envía mensaje de error
-			HttpSession session = request.getSession(true);
-			session.setAttribute("loggedIn", new String("false"));
-			url = base + "login.jsp";
 
-			// sendLoginForm(response, true);
+
+			String userName = request.getParameter("userName");
+			String password = request.getParameter("password");
+			if (validador.login(userName, password)) {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("loggedIn", new String("true"));
+				session.setAttribute("ID", new String(validador
+						.getIdCliente(userName)));
+				url = base + "mostrarCuentasCliente.jsp";
+			} else {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("loggedIn", new String("false"));
+				url = base + "login.jsp";
+			}
+
+
+		if (action != null) {
+			if (action.equals("mostrarCuentasCliente"))
+				url = base + "mostrarCuentasCliente.jsp";
+			else if (action.equals("depositarCajaAhorro"))
+				url = base + "depositarCajaAhorro.jsp";
+			else if (action.equals("depositarCuentaCorriente"))
+				url = base + "depositarCuentaCorriente.jsp";
+			else if (action.equals("extraerCajaAhorro"))
+				url = base + "extraerCajaAhorro.jsp";
+			else if (action.equals("extraerCuentaCorriente"))
+				url = base + "extraerCuentaCorriente.jsp";
+			else if (action.equals("MostrarResultadoDepositoCajaDeAhorro"))
+				url = base + "MostrarResultadoDepositoCajaDeAhorro.jsp";
+			else if (action.equals("mostrarResultadoExtraccionCajaDeAhorro"))
+				url = base + "mostrarResultadoExtraccionCajaDeAhorro.jsp";
+			else if (action.equals("mostrarResultadoDepositoCuentaCorriente"))
+				url = base + "mostrarResultadoDepositoCuentaCorriente.jsp";
 		}
-
-		// String action = request.getParameter("action");
-		//
-		// if (action != null) {
-		// if (action.equals("mostrarCuentasCliente"))
-		// url = base + "mostrarCuentasCliente.jsp";
-		// else if (action.equals("depositarCajaAhorro"))
-		// url = base + "depositarCajaAhorro.jsp";
-		// else if (action.equals("depositarCuentaCorriente"))
-		// url = base + "depositarCuentaCorriente.jsp";
-		// else if (action.equals("extraerCajaAhorro"))
-		// url = base + "extraerCajaAhorro.jsp";
-		// else if (action.equals("extraerCuentaCorriente"))
-		// url = base + "extraerCuentaCorriente.jsp";
-		// else if (action.equals("MostrarResultadoDepositoCajaDeAhorro"))
-		// url = base + "MostrarResultadoDepositoCajaDeAhorro.jsp";
-		// else if (action.equals("mostrarResultadoExtraccionCajaDeAhorro"))
-		// url = base + "mostrarResultadoExtraccionCajaDeAhorro.jsp";
-		// else if (action.equals("mostrarResultadoDepositoCuentaCorriente"))
-		// url = base + "mostrarResultadoDepositoCuentaCorriente.jsp";
-		// }
 		RequestDispatcher requestDispatcher = getServletContext()
 				.getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);
