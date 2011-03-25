@@ -30,7 +30,7 @@ public class SessionLoginServlet extends HttpServlet
 			//envía mensaje de error
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loggedIn", new String("false"));
-			response.sendRedirect("Login.jsp");
+			response.sendRedirect("login.jsp");
 		//	sendLoginForm(response, true);
 		}
 	}
@@ -71,7 +71,7 @@ public class SessionLoginServlet extends HttpServlet
 		out.println("</TR>");
 		out.println("<TR>");
 		out.println("<TD ALIGN=RIGHT COLSPAN=2>");
-		out.println("<INPUT TYPE=SUBMIT VALUE=Login></TD>");
+		out.println("<INPUT TYPE=SUBMIT VALUE=login></TD>");
 		out.println("</TR>");
 		out.println("</TABLE>");
 		out.println("</FORM>");
