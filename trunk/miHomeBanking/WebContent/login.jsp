@@ -12,7 +12,10 @@
 <BODY>
 <CENTER>
 <%
-	if (validaLogin.isEstaLogueado() == false) {
+	if ("false".equals(session.getAttribute("loggedIn").toString())
+			&& request.getParameter("userName")==null
+			&& request.getParameter("password")==null) {
+	} else {
 		out.println("Login failed. Please try again.<BR>");
 		out
 				.println("If you think you have entered the correct user name"
