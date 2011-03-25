@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Banco
 {
-    private static List <Cliente> clientes;
+    private static List <ClienteBean> clientes;
 
    static
    {
-       clientes = new ArrayList <Cliente>(10);
+       clientes = new ArrayList <ClienteBean>(10);
    }
 
    private Banco()
@@ -19,20 +19,20 @@ public class Banco
 
    public static void addCustomer(String f, String l)
    {
-       Cliente c = new Cliente();
+	   ClienteBean c = new ClienteBean();
        clientes.add(c);
    }
 
    public static int getNumOfCustomers()
    {
-       return customers.size();
+       return clientes.size();
    }
 
-   public static Customer getCustomer(int index)
+   public static ClienteBean getClienteBean(int index)
    {
-       if(index < customers.size())
+       if(index < clientes.size())
        {
-           return customers.get(index);
+           return clientes.get(index);
        }
        else
        {
