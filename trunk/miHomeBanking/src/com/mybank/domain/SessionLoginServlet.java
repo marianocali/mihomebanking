@@ -3,13 +3,10 @@ package com.mybank.domain;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.*;
-import java.sql.*;
 
-//import com.brainysoftware.java.StringUtil;
-
-public class SessionLoginServlet extends HttpServlet {
-
+public class SessionLoginServlet extends HttpServlet 
+{
+	ValidaLoginBean validador = new ValidaLoginBean(); 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		sendLoginForm(response, false);
@@ -20,19 +17,25 @@ public class SessionLoginServlet extends HttpServlet {
 
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		if (login(userName, password)) {
+		if (validador.login(userName, password)) 
+		{
 			// send cookie to the browser
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loggedIn", new String("true"));
-			session.setAttribute("ID", new String(getIdCliente(userName)));
+			session.setAttribute("ID", new String(validador.getIdCliente(userName)));
 			response.sendRedirect("mostrarCuentasCliente.jsp");
-		} else {
-			sendLoginForm(response, true);
+		} 
+		else 
+		{
+			//envía mensaje de error
+			HttpSession session = request.getSession(true);
+			session.setAttribute("loggedIn", new String("false"));
+			response.sendRedirect("Login.jsp");
+		//	sendLoginForm(response, true);
 		}
 	}
 
-	private void sendLoginForm(HttpServletResponse response,
-			boolean withErrorMessage) throws ServletException, IOException {
+	private void sendLoginForm(HttpServletResponse response, boolean withErrorMessage) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<HTML>");
@@ -75,71 +78,5 @@ public class SessionLoginServlet extends HttpServlet {
 		out.println("</CENTER>");
 		out.println("</BODY>");
 		out.println("</HTML>");
-	}
-
-	public static String getIdCliente(String userName) {
-		String idCliente = "";
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
-			Statement s = con.createStatement();
-			String sql = "SELECT ID FROM CLIENTES" + " WHERE USUARIO='"
-					+ userName + "'";
-			// StringUtil.fixSqlFieldValue(userName)
-			// StringUtil.fixSqlFieldValue(password)
-
-			ResultSet rs = s.executeQuery(sql);
-
-			if (rs.next()) {
-				idCliente = rs.getString(1);
-				rs.close();
-				s.close();
-				con.close();
-				return idCliente;
-			}
-			rs.close();
-			s.close();
-			con.close();
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.toString());
-		} catch (SQLException e) {
-			System.out.println(e.toString());
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return idCliente;
-	}
-
-	public static boolean login(String userName, String password) {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
-			Statement s = con.createStatement();
-			String sql = "SELECT NOMBRE FROM CLIENTES" + " WHERE USUARIO='"
-					+ userName + "'" + " AND PASSWORD='" + password + "'";
-			// StringUtil.fixSqlFieldValue(userName)
-			// StringUtil.fixSqlFieldValue(password)
-
-			ResultSet rs = s.executeQuery(sql);
-
-			if (rs.next()) {
-				rs.close();
-				s.close();
-				con.close();
-				return true;
-			}
-			rs.close();
-			s.close();
-			con.close();
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.toString());
-		} catch (SQLException e) {
-			System.out.println(e.toString());
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return false;
 	}
 }
