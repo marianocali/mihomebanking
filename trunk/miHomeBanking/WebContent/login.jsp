@@ -17,8 +17,7 @@
 			&& request.getParameter("password")==null) {
 	} else {
 		out.println("Login failed. Please try again.<BR>");
-		out
-				.println("If you think you have entered the correct user name"
+		out.println("If you think you have entered the correct user name"
 						+ " and password, the cookie setting in your browser might be off."
 						+ "<BR>Click <A HREF=InfoPage.html>here</A> for information"
 						+ " on how to turn it on.<BR>");
