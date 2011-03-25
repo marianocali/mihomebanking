@@ -13,7 +13,6 @@ public class Controller extends HttpServlet {
 	 * 
 	 */
 
-	private boolean esPrimerIngreso = true;
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
