@@ -4,10 +4,42 @@
     <servlet-name>Controller</servlet-name>
     <servlet-class>com.mybank.domain.Controller</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>Controller</servlet-name>
-    <url-pattern>/depositarCajaAhorro</url-pattern>
-  </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/depositarCajaAhorro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/depositarCuentaCorriente</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/extraerCajaAhorro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/extraerCuentaCorriente</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/mostrarCuentasCliente</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/mostrarResultadoDeposito</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/mostrarResultadoDepositoCuentaCorriente</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/mostrarResultadoExtraccion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/MostrarResultadoExtraccionCuentaCorriente</url-pattern>
+	</servlet-mapping>
     <servlet-mapping>
     <servlet-name>Controller</servlet-name>
     <url-pattern>/login</url-pattern>
