@@ -2,23 +2,23 @@
 <%@ page session="false"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.mybank.domain.*"%>
-<!--<%-->
-<!--	HttpSession session = request.getSession();-->
-<!--	if (session == null) {-->
-<!--		System.out.println("session es null, no esta creada la sesion");-->
-<!--		response.sendRedirect("login");-->
-<!--	} else {-->
-<!--		String loggedIn = (String) session.getAttribute("loggedIn");-->
-<!--		System.out.println("logeddIn :" + loggedIn);-->
-<!--		if (!loggedIn.equals("true")) {-->
-<!--			response.sendRedirect("Login");-->
-<!--		}-->
-<!--	}-->
-<!---->
-<!--	String id = (String) session.getAttribute("ID");-->
-<!--	cliente.cargarCliente(Integer.parseInt(id)); //carga el cliente con sus cuentas-->
-<!--	//System.out.println(elCliente);-->
-<!--%>-->
+<%
+	HttpSession session = request.getSession();
+	if (session == null) {
+		System.out.println("session es null, no esta creada la sesion");
+		response.sendRedirect("login");
+	} else {
+		String loggedIn = (String) session.getAttribute("loggedIn");
+		System.out.println("logeddIn en depositarCajaAhorro:" + loggedIn);
+		if (!loggedIn.equals("true")) {
+			response.sendRedirect("login");
+		}
+	}
+
+	String id = (String) session.getAttribute("ID");
+	cliente.cargarCliente(Integer.parseInt(id)); //carga el cliente con sus cuentas
+	//System.out.println(elCliente);
+%>
 
 <HTML>
 <HEAD>
