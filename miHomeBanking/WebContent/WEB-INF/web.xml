@@ -6,7 +6,7 @@
   </servlet>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
-		<url-pattern>/depositarCajaAhorro</url-pattern>
+		<url-pattern>/depositarCajaDeAhorro</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
@@ -14,7 +14,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
-		<url-pattern>/extraerCajaAhorro</url-pattern>
+		<url-pattern>/extraerCajaDeAhorro</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
@@ -26,7 +26,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
-		<url-pattern>/mostrarResultadoDeposito</url-pattern>
+		<url-pattern>/mostrarResultadoDepositoCajaDeAhorro</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
@@ -34,11 +34,11 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
-		<url-pattern>/mostrarResultadoExtraccion</url-pattern>
+		<url-pattern>/mostrarResultadoExtraccionCajaDeAhorro</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
-		<url-pattern>/MostrarResultadoExtraccionCuentaCorriente</url-pattern>
+		<url-pattern>/mostrarResultadoExtraccionCuentaCorriente</url-pattern>
 	</servlet-mapping>
     <servlet-mapping>
     <servlet-name>Controller</servlet-name>
