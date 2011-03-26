@@ -28,6 +28,7 @@ public class Controller extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		
+		//si ya está logueado, saltea la parte de login
 		if (!"true".equals(session.getAttribute("loggedIn"))) {
 			if (validador.login(userName, password)) {
 				session.setAttribute("loggedIn", new String("true"));

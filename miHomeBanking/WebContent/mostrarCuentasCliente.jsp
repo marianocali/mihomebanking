@@ -53,7 +53,7 @@
 		<%
 		// out.println("<TD>" + cajaDeAhorro.getSaldo() + "</TD>");
 		%>
-		<Td><A href="http://localhost:8081/mihomebanking/depositarCajaAhorro?action=depositarCajaAhorro"> Depositar </A> / <A href="extraerCajaAhorro.jsp"> Extraer </A></Td>
+		<Td><A href="http://localhost:8081/miHomeBanking/depositarCajaAhorro?action=depositarCajaAhorro"> Depositar </A> / <A href="http://localhost:8081/miHomeBanking/extraerCajaAhorro?action=extraerCajaAhorro"> Extraer </A></Td>
 	</TR>
 	<TR>
 		<Td>Cuenta Corriente</Td>
