@@ -20,8 +20,9 @@ public class CajaDeAhorro extends Cuenta {
 		try 
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("JDBC driver loaded");
-		} catch (ClassNotFoundException e) {
+		} 
+		catch (ClassNotFoundException e) 
+		{
 			System.out.println(e.toString());
 		}
 		String sql = "SELECT * FROM CUENTAS WHERE NUMERO = '" + nroCajaAhorro + "'";

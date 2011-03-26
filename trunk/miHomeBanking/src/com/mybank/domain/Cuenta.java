@@ -51,7 +51,6 @@ public abstract class Cuenta
 		try 
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("JDBC driver loaded");
 		} 
 		catch (ClassNotFoundException e) 
 		{
