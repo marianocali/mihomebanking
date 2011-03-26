@@ -27,7 +27,6 @@ public class CuentaCorriente extends Cuenta {
 	public void cargarCuentaCorriente(String nroCuentaCorriente) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("JDBC driver loaded");
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.toString());
 		}

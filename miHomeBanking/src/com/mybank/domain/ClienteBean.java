@@ -88,8 +88,7 @@ public class ClienteBean {
 	public void cargarCliente(int idCliente) {
 		this.setId(Integer.toString(idCliente));
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("JDBC driver loaded");
+			Class.forName("oracle.jdbc.driver.OracleDriver");			
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.toString());
 		}
