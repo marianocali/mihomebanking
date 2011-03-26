@@ -22,7 +22,6 @@
 
 	String id = (String) session.getAttribute("ID");
 	cliente.cargarCliente(Integer.parseInt(id)); //carga el cliente con sus cuentas
-	//System.out.println(elCliente);
 %>
 
 <HTML>
