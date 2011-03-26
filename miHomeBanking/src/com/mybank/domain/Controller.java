@@ -20,26 +20,28 @@ public class Controller extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		ValidaLoginBean validador = new ValidaLoginBean();
+		HttpSession session = request.getSession(true);
 
 		String base = "/";
 		String url = base + "login.jsp";
 		String action = request.getParameter("action");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		if (validador.login(userName, password)) 
-		{
-			HttpSession session = request.getSession(true);
-			session.setAttribute("loggedIn", new String("true"));
-			session.setAttribute("ID", new String(validador.getIdCliente(userName)));
-			url = base + "mostrarCuentasCliente.jsp";
-			System.out.println("logeddIn en el if del Controller " + session.getAttribute("loggedIn"));
-		} 
-		else 
-		{
-			HttpSession session = request.getSession(true);
-			session.setAttribute("loggedIn", new String("false"));
-			url = base + "login.jsp";
-			System.out.println("logeddIn en el else del Controller: " + session.getAttribute("loggedIn"));
+		
+		if (!"true".equals(session.getAttribute("loggedIn"))) {
+			if (validador.login(userName, password)) {
+				session.setAttribute("loggedIn", new String("true"));
+				session.setAttribute("ID", new String(validador
+						.getIdCliente(userName)));
+				url = base + "mostrarCuentasCliente.jsp";
+				System.out.println("logeddIn en el if del Controller "
+						+ session.getAttribute("loggedIn"));
+			} else {
+				session.setAttribute("loggedIn", new String("false"));
+				url = base + "login.jsp";
+				System.out.println("logeddIn en el else del Controller: "
+						+ session.getAttribute("loggedIn"));
+			}
 		}
 
 		if (action != null) {
@@ -61,8 +63,9 @@ public class Controller extends HttpServlet {
 				url = base + "mostrarResultadoDepositoCuentaCorriente.jsp";
 		}
 		System.out.println("url : " + url);
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
-		
+		RequestDispatcher requestDispatcher = getServletContext()
+				.getRequestDispatcher(url);
+
 		requestDispatcher.forward(request, response);
 	}
 
