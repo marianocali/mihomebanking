@@ -60,8 +60,7 @@ public class CajaDeAhorro extends Cuenta {
 				saldo = saldo - monto;		 	
 				try 
 				{
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-					System.out.println("JDBC driver loaded");
+					Class.forName("oracle.jdbc.driver.OracleDriver");					
 				} 
 				catch (ClassNotFoundException e) 
 				{
