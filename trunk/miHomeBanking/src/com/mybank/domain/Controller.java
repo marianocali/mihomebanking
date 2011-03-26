@@ -28,7 +28,7 @@ public class Controller extends HttpServlet {
 		String base = "/";
 		String url = base + "login.jsp";
 		String action = request.getParameter("action");
-		System.out.println(action);
+		
 
 
 

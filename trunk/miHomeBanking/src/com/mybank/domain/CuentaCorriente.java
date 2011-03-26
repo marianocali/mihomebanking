@@ -47,8 +47,7 @@ public class CuentaCorriente extends Cuenta {
 			}
 			rs.close();
 			s.close();
-			con.close();
-			System.out.println(this);
+			con.close();			
 		} catch (SQLException e) {
 		} catch (Exception e) {
 		}
@@ -62,8 +61,7 @@ public class CuentaCorriente extends Cuenta {
 			isOk = true;
 			saldo = saldo - monto;
 			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-				System.out.println("JDBC driver loaded");
+				Class.forName("oracle.jdbc.driver.OracleDriver");				
 			} catch (ClassNotFoundException e) {
 				System.out.println(e.toString());
 			}
