@@ -4,13 +4,18 @@
 <%@ page import="com.mybank.domain.*"%>
 <%
 	HttpSession session = request.getSession();
-	if (session == null) {
+	if (session == null) 
+	{
 		System.out.println("session es null, no esta creada la sesion");
 		response.sendRedirect("login");
-	} else {
+	} 
+	else 
+	{
 		String loggedIn = (String) session.getAttribute("loggedIn");
-		System.out.println("logeddIn en depositarCajaAhorro:" + loggedIn);
-		if (!loggedIn.equals("true")) {
+		//System.out.println("session.getAttribute(\"loggedIn\") " + session.getAttribute("loggedIn"));
+		if (!loggedIn.equals("true")) 
+		{
+			//System.out.println("logeddIn en depositarCajaAhorro: " + loggedIn);
 			response.sendRedirect("login");
 		}
 	}
