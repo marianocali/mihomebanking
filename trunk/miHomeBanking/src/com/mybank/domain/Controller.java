@@ -48,16 +48,16 @@ public class Controller extends HttpServlet {
 		if (action != null) {
 			if (action.equals("mostrarCuentasCliente"))
 				url = base + "mostrarCuentasCliente.jsp";
-			else if (action.equals("depositarCajaAhorro"))
-				url = base + "depositarCajaAhorro.jsp";
+			else if (action.equals("depositarCajaDeAhorro"))
+				url = base + "depositarCajaDeAhorro.jsp";
 			else if (action.equals("depositarCuentaCorriente"))
 				url = base + "depositarCuentaCorriente.jsp";
-			else if (action.equals("extraerCajaAhorro"))
-				url = base + "extraerCajaAhorro.jsp";
+			else if (action.equals("extraerCajaDeAhorro"))
+				url = base + "extraerCajaDeAhorro.jsp";
 			else if (action.equals("extraerCuentaCorriente"))
 				url = base + "extraerCuentaCorriente.jsp";
-			else if (action.equals("MostrarResultadoDepositoCajaDeAhorro"))
-				url = base + "MostrarResultadoDepositoCajaDeAhorro.jsp";
+			else if (action.equals("mostrarResultadoDepositoCajaDeAhorro"))
+				url = base + "mostrarResultadoDepositoCajaDeAhorro.jsp";
 			else if (action.equals("mostrarResultadoExtraccionCajaDeAhorro"))
 				url = base + "mostrarResultadoExtraccionCajaDeAhorro.jsp";
 			else if (action.equals("mostrarResultadoDepositoCuentaCorriente"))

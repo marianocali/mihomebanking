@@ -4,14 +4,19 @@
 <%@ page import="com.mybank.domain.*"%>
 <%
 	HttpSession session = request.getSession();
-	if (session == null) {
+	if (session == null) 
+	{
 		System.out.println("session es null, no esta creada la sesion");
-		response.sendRedirect("Login");
-	} else {
+		response.sendRedirect("login");
+	} 
+	else 
+	{
 		String loggedIn = (String) session.getAttribute("loggedIn");
-		System.out.println("logeddIn :" + loggedIn);
-		if (!loggedIn.equals("true")) {
-			response.sendRedirect("Login");
+		//System.out.println("session.getAttribute(\"loggedIn\") " + session.getAttribute("loggedIn"));
+		if (!loggedIn.equals("true")) 
+		{
+			//System.out.println("logeddIn en depositarCajaAhorro: " + loggedIn);
+			response.sendRedirect("login");
 		}
 	}
 
@@ -21,19 +26,19 @@
 
 <HTML>
 <HEAD>
-<TITLE>Extracci&oacute;n Caja de Ahorro</TITLE>
+<TITLE>Deposito Caja de Ahorro</TITLE>
 </HEAD>
 <BODY>
 <CENTER><BR>
 <BR>
 <BR>
 
-<h2>Extracci&oacute;n en Caja de Ahorro de <%
+<h2>Deposito en Caja de Ahorro de <%
 	out.println("<TD>" + cliente.getApellido() + "</TD>");
 	out.println("<TD>" + cliente.getNombre() + "</TD>");
 %>
 </h2>
-<FORM METHOD=POST ACTION=mostrarResultadoExtraccion.jsp>
+<FORM METHOD="POST" ACTION="http://localhost:8081/miHomeBanking/mostrarResultadoDepositoCajaDeAhorro?action=mostrarResultadoDepositoCajaDeAhorro">
 
 <TABLE border=1>
 	<TR>
@@ -41,7 +46,7 @@
 		<h3>su saldo actual</h3>
 		</TH>
 		<TH>
-		<h3>Ingrese el monto a retirar</h3>
+		<h3>Ingrese el monto a depositar</h3>
 		</TH>
 	</TR>
 	<TR>
@@ -52,11 +57,12 @@
 		<td><input type="text" name=montoIngresado></td>
 	</TR>
 	<TR>
-		<Td colspan = 2 align="center"> 
-			<INPUT TYPE=SUBMIT> 
-			<input type="button" value="Cancelar"
+		<Td></Td>
+		<Td><INPUT TYPE=SUBMIT value="Depositar" >
+
+		<input align="RIGHT" type="button" value="Cancelar"
 			onclick="location.href = 'mostrarCuentasCliente.jsp'";
-		></Td>
+></Td>
 
 	</TR>
 

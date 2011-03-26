@@ -4,19 +4,14 @@
 <%@ page import="com.mybank.domain.*"%>
 <%
 	HttpSession session = request.getSession();
-	if (session == null) 
-	{
+	if (session == null) {
 		System.out.println("session es null, no esta creada la sesion");
-		response.sendRedirect("login");
-	} 
-	else 
-	{
+		response.sendRedirect("Login");
+	} else {
 		String loggedIn = (String) session.getAttribute("loggedIn");
-		//System.out.println("session.getAttribute(\"loggedIn\") " + session.getAttribute("loggedIn"));
-		if (!loggedIn.equals("true")) 
-		{
-			//System.out.println("logeddIn en depositarCajaAhorro: " + loggedIn);
-			response.sendRedirect("login");
+		System.out.println("logeddIn :" + loggedIn);
+		if (!loggedIn.equals("true")) {
+			response.sendRedirect("Login");
 		}
 	}
 
@@ -26,19 +21,19 @@
 
 <HTML>
 <HEAD>
-<TITLE>Deposito Caja de Ahorro</TITLE>
+<TITLE>Extracci&oacute;n Caja de Ahorro</TITLE>
 </HEAD>
 <BODY>
 <CENTER><BR>
 <BR>
 <BR>
 
-<h2>Deposito en Caja de Ahorro de <%
+<h2>Extracci&oacute;n en Caja de Ahorro de <%
 	out.println("<TD>" + cliente.getApellido() + "</TD>");
 	out.println("<TD>" + cliente.getNombre() + "</TD>");
 %>
 </h2>
-<FORM METHOD=POST ACTION=mostrarResultadoDeposito.jsp>
+<FORM METHOD=POST ACTION=mostrarResultadoExtraccionCajaDeAhorro.jsp>
 
 <TABLE border=1>
 	<TR>
@@ -46,7 +41,7 @@
 		<h3>su saldo actual</h3>
 		</TH>
 		<TH>
-		<h3>Ingrese el monto a depositar</h3>
+		<h3>Ingrese el monto a retirar</h3>
 		</TH>
 	</TR>
 	<TR>
@@ -57,12 +52,11 @@
 		<td><input type="text" name=montoIngresado></td>
 	</TR>
 	<TR>
-		<Td></Td>
-		<Td><INPUT TYPE=SUBMIT> <!--				 <input align= left type="button" value="Efectuar deposito" >-->
-
-		<input align="RIGHT" type="button" value="Cancelar"
+		<Td colspan = 2 align="center"> 
+			<INPUT TYPE=SUBMIT> 
+			<input type="button" value="Cancelar"
 			onclick="location.href = 'mostrarCuentasCliente.jsp'";
-></Td>
+		></Td>
 
 	</TR>
 
