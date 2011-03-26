@@ -55,13 +55,17 @@ public class Controller extends HttpServlet {
 			else if (action.equals("extraerCajaDeAhorro"))
 				url = base + "extraerCajaDeAhorro.jsp";
 			else if (action.equals("extraerCuentaCorriente"))
-				url = base + "extraerCuentaCorriente.jsp";
+				url = base + "extraerCuentaCorriente.jsp";			
 			else if (action.equals("mostrarResultadoDepositoCajaDeAhorro"))
 				url = base + "mostrarResultadoDepositoCajaDeAhorro.jsp";
 			else if (action.equals("mostrarResultadoExtraccionCajaDeAhorro"))
 				url = base + "mostrarResultadoExtraccionCajaDeAhorro.jsp";
 			else if (action.equals("mostrarResultadoDepositoCuentaCorriente"))
 				url = base + "mostrarResultadoDepositoCuentaCorriente.jsp";
+			else if (action.equals("mostrarResultadoExtraccionCuentaCorriente"))
+				url = base + "mostrarResultadoExtraccionCuentaCorriente.jsp";
+			
+			
 		}
 		System.out.println("url : " + url);
 		RequestDispatcher requestDispatcher = getServletContext()

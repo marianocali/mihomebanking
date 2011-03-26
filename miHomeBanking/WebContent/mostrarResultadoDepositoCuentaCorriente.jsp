@@ -36,7 +36,8 @@
 		<% out.println(cliente.getCuentaCorriente().getSaldo() ); %>
 		</h3>
 				
-				<input type="button" value="Volver"  onclick="location.href='mostrarCuentasCliente.jsp'">
+				<input type="button" value="Volver"  
+				onclick="location.href='http://localhost:8081/miHomeBanking/mostrarCuentasCliente?action=mostrarCuentasCliente'">
 
 
 </body>
