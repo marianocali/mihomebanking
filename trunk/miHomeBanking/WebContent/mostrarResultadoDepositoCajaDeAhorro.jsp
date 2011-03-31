@@ -22,6 +22,9 @@
 
 	double montoIngresado = Double.parseDouble((String) request.getParameter("montoIngresado"));
 	
+	System.out.println(request.getParameter("montoIngresado"));
+	System.out.println(request.getParameter("montoIngresado").getClass());
+	
 	cliente.getCajaDeAhorro().deposito(montoIngresado);
 
 %>
