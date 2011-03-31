@@ -33,7 +33,7 @@
 	out.println("<TD>" + cliente.getNombre() + "</TD>");
 %>
 </h2>
-<FORM METHOD="POST" ACTION="http://localhost:8081/miHomeBanking/mostrarResultadoExtraccionCuentaCorriente?action=mostrarResultadoExtraccionCuentaCorriente">
+<FORM METHOD="POST" ACTION="http://localhost:8081/mihomebanking/mostrarResultadoExtraccionCuentaCorriente?action=mostrarResultadoExtraccionCuentaCorriente">
 
 <TABLE border=1>
 	<TR>

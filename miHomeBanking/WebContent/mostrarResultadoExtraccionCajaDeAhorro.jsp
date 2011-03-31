@@ -39,6 +39,6 @@
 		<h3 align="center"> <% out.println(mensajeOperacion); %></h3>
 				
 				<input type="button" value="Volver"  
-				onclick="location.href='http://localhost:8081/miHomeBanking/mostrarCuentasCliente?action=mostrarCuentasCliente'">
+				onclick="location.href='http://localhost:8081/mihomebanking/mostrarCuentasCliente?action=mostrarCuentasCliente'">
 </body>
 </html>
