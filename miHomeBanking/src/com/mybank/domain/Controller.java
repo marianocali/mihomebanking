@@ -32,16 +32,11 @@ public class Controller extends HttpServlet {
 		if (!"true".equals(session.getAttribute("loggedIn"))) {
 			if (validador.login(userName, password)) {
 				session.setAttribute("loggedIn", new String("true"));
-				session.setAttribute("ID", new String(validador
-						.getIdCliente(userName)));
+				session.setAttribute("ID", new String(validador.getIdCliente(userName)));
 				url = base + "mostrarCuentasCliente.jsp";
-				System.out.println("logeddIn en el if del Controller "
-						+ session.getAttribute("loggedIn"));
 			} else {
 				session.setAttribute("loggedIn", new String("false"));
 				url = base + "login.jsp";
-				System.out.println("logeddIn en el else del Controller: "
-						+ session.getAttribute("loggedIn"));
 			}
 		}
 
@@ -67,7 +62,6 @@ public class Controller extends HttpServlet {
 			
 			
 		}
-		System.out.println("url : " + url);
 		RequestDispatcher requestDispatcher = getServletContext()
 				.getRequestDispatcher(url);
 
